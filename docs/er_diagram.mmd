@@ -1,0 +1,101 @@
+erDiagram
+    USERS ||--o{ BOOKINGS : makes
+    TRAINS ||--o{ TRAIN_ROUTES : serves
+    STATIONS ||--o{ TRAIN_ROUTES : origin
+    STATIONS ||--o{ TRAIN_ROUTES : destination
+    TRAIN_ROUTES ||--o{ TRAIN_SCHEDULES : has
+    TRAINS ||--o{ TRAIN_SEATS : contains
+    TRAIN_SCHEDULES ||--o{ BOOKINGS : receives
+    TRAIN_SCHEDULES ||--o{ SEAT_ALLOCATIONS : has
+    TRAIN_SEATS ||--o{ SEAT_ALLOCATIONS : assigned_as
+    BOOKINGS ||--o| SEAT_ALLOCATIONS : receives
+    BOOKINGS ||--o| WAITLIST_ENTRIES : may_enter
+    TRAIN_SCHEDULES ||--o{ WAITLIST_ENTRIES : queues
+    BOOKINGS ||--o| CANCELLATIONS : cancellation_record
+    BOOKINGS ||--o| WAITLIST_PROBABILITY_HISTORY : finalized_outcome
+    TRAIN_SCHEDULES ||--o{ CANCELLATIONS : records
+    TRAIN_SEATS ||--o{ CANCELLATIONS : seat_released
+    TRAIN_ROUTES ||--o{ WAITLIST_PROBABILITY_HISTORY : provides_history
+
+    USERS {
+      bigint user_id PK
+      varchar full_name
+      varchar email UK
+      varchar password_hash
+      enum role
+    }
+    STATIONS {
+      bigint station_id PK
+      varchar station_code UK
+      varchar station_name
+      varchar city
+    }
+    TRAINS {
+      bigint train_id PK
+      varchar train_number UK
+      varchar train_name
+      enum status
+    }
+    TRAIN_ROUTES {
+      bigint route_id PK
+      bigint train_id FK
+      bigint origin_station_id FK
+      bigint destination_station_id FK
+      decimal distance_km
+    }
+    TRAIN_SCHEDULES {
+      bigint schedule_id PK
+      bigint route_id FK
+      date journey_date
+      time departure_time
+      time arrival_time
+      decimal base_fare
+      enum booking_status
+    }
+    TRAIN_SEATS {
+      bigint seat_id PK
+      bigint train_id FK
+      varchar coach_number
+      varchar seat_number
+      enum class_type
+    }
+    BOOKINGS {
+      bigint booking_id PK
+      bigint passenger_id FK
+      bigint schedule_id FK
+      enum class_type
+      enum status
+      decimal fare
+    }
+    SEAT_ALLOCATIONS {
+      bigint allocation_id PK
+      bigint schedule_id FK
+      bigint seat_id FK
+      bigint booking_id FK
+    }
+    WAITLIST_ENTRIES {
+      bigint waitlist_id PK
+      bigint booking_id FK
+      bigint schedule_id FK
+      enum class_type
+      int queue_position
+      enum status
+    }
+    CANCELLATIONS {
+      bigint cancellation_id PK
+      bigint booking_id FK
+      bigint schedule_id FK
+      bigint released_seat_id FK
+      datetime cancelled_at
+    }
+    WAITLIST_PROBABILITY_HISTORY {
+      bigint history_id PK
+      bigint source_booking_id FK
+      bigint route_id FK
+      enum class_type
+      int waitlist_position_at_observation
+      int days_remaining_at_observation
+      enum final_outcome
+      date observation_date
+      enum data_source
+    }

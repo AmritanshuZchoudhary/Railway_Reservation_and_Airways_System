@@ -1,0 +1,285 @@
+USE railway_db;
+-- DEMO ONLY: every row generated below is synthetic, not real railway data.
+-- Re-running this file replaces only SIMULATED_DEMO records; real RECORDED_OUTCOME rows are preserved.
+-- Temporarily disable Workbench safe updates only for this seed-data cleanup.
+SET SQL_SAFE_UPDATES = 0;
+DELETE FROM waitlist_probability_history WHERE data_source = 'SIMULATED_DEMO';
+SET SQL_SAFE_UPDATES = 1;
+
+-- Route 1, class SLEEPER, waitlist positions 1-2: 17/20 successes.
+INSERT INTO waitlist_probability_history (route_id, class_type, waitlist_position_at_observation, days_remaining_at_observation, final_outcome, observation_date, data_source) VALUES
+  (1, 'SLEEPER', 1, 2, 'CONFIRMED', '2026-07-28', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 2, 3, 'CONFIRMED', '2026-07-23', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 1, 2, 'CONFIRMED', '2026-07-18', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 2, 3, 'CONFIRMED', '2026-07-13', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 1, 2, 'CONFIRMED', '2026-07-08', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 2, 3, 'CONFIRMED', '2026-07-03', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 1, 2, 'CONFIRMED', '2026-06-28', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 2, 3, 'CONFIRMED', '2026-06-23', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 1, 2, 'CONFIRMED', '2026-06-18', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 2, 3, 'CONFIRMED', '2026-06-13', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 1, 2, 'CONFIRMED', '2026-06-08', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 2, 3, 'CONFIRMED', '2026-06-03', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 1, 2, 'CONFIRMED', '2026-05-29', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 2, 3, 'CONFIRMED', '2026-05-24', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 1, 2, 'CONFIRMED', '2026-05-19', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 2, 3, 'CONFIRMED', '2026-05-14', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 1, 2, 'CONFIRMED', '2026-05-09', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 2, 3, 'NOT_CONFIRMED', '2026-05-04', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 1, 2, 'NOT_CONFIRMED', '2026-04-29', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 2, 3, 'NOT_CONFIRMED', '2026-04-24', 'SIMULATED_DEMO');
+
+-- Route 1, class SLEEPER, waitlist positions 3-5: 12/20 successes.
+INSERT INTO waitlist_probability_history (route_id, class_type, waitlist_position_at_observation, days_remaining_at_observation, final_outcome, observation_date, data_source) VALUES
+  (1, 'SLEEPER', 3, 2, 'CONFIRMED', '2026-07-22', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 4, 3, 'CONFIRMED', '2026-07-17', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 5, 2, 'CONFIRMED', '2026-07-12', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 3, 3, 'CONFIRMED', '2026-07-07', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 4, 2, 'CONFIRMED', '2026-07-02', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 5, 3, 'CONFIRMED', '2026-06-27', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 3, 2, 'CONFIRMED', '2026-06-22', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 4, 3, 'CONFIRMED', '2026-06-17', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 5, 2, 'CONFIRMED', '2026-06-12', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 3, 3, 'CONFIRMED', '2026-06-07', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 4, 2, 'CONFIRMED', '2026-06-02', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 5, 3, 'CONFIRMED', '2026-05-28', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 3, 2, 'NOT_CONFIRMED', '2026-05-23', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 4, 3, 'NOT_CONFIRMED', '2026-05-18', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 5, 2, 'NOT_CONFIRMED', '2026-05-13', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 3, 3, 'NOT_CONFIRMED', '2026-05-08', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 4, 2, 'NOT_CONFIRMED', '2026-05-03', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 5, 3, 'NOT_CONFIRMED', '2026-04-28', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 3, 2, 'NOT_CONFIRMED', '2026-04-23', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 4, 3, 'NOT_CONFIRMED', '2026-04-18', 'SIMULATED_DEMO');
+
+-- Route 1, class SLEEPER, waitlist positions 6-10: 7/20 successes.
+INSERT INTO waitlist_probability_history (route_id, class_type, waitlist_position_at_observation, days_remaining_at_observation, final_outcome, observation_date, data_source) VALUES
+  (1, 'SLEEPER', 6, 2, 'CONFIRMED', '2026-07-13', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 7, 3, 'CONFIRMED', '2026-07-08', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 8, 2, 'CONFIRMED', '2026-07-03', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 9, 3, 'CONFIRMED', '2026-06-28', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 10, 2, 'CONFIRMED', '2026-06-23', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 6, 3, 'CONFIRMED', '2026-06-18', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 7, 2, 'CONFIRMED', '2026-06-13', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 8, 3, 'NOT_CONFIRMED', '2026-06-08', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 9, 2, 'NOT_CONFIRMED', '2026-06-03', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 10, 3, 'NOT_CONFIRMED', '2026-05-29', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 6, 2, 'NOT_CONFIRMED', '2026-05-24', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 7, 3, 'NOT_CONFIRMED', '2026-05-19', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 8, 2, 'NOT_CONFIRMED', '2026-05-14', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 9, 3, 'NOT_CONFIRMED', '2026-05-09', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 10, 2, 'NOT_CONFIRMED', '2026-05-04', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 6, 3, 'NOT_CONFIRMED', '2026-04-29', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 7, 2, 'NOT_CONFIRMED', '2026-04-24', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 8, 3, 'NOT_CONFIRMED', '2026-04-19', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 9, 2, 'NOT_CONFIRMED', '2026-04-14', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 10, 3, 'NOT_CONFIRMED', '2026-04-09', 'SIMULATED_DEMO');
+
+-- Route 1, class SLEEPER, waitlist positions 11-20: 3/20 successes.
+INSERT INTO waitlist_probability_history (route_id, class_type, waitlist_position_at_observation, days_remaining_at_observation, final_outcome, observation_date, data_source) VALUES
+  (1, 'SLEEPER', 11, 2, 'CONFIRMED', '2026-06-28', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 12, 3, 'CONFIRMED', '2026-06-23', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 13, 2, 'CONFIRMED', '2026-06-18', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 14, 3, 'NOT_CONFIRMED', '2026-06-13', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 15, 2, 'NOT_CONFIRMED', '2026-06-08', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 16, 3, 'NOT_CONFIRMED', '2026-06-03', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 17, 2, 'NOT_CONFIRMED', '2026-05-29', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 18, 3, 'NOT_CONFIRMED', '2026-05-24', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 19, 2, 'NOT_CONFIRMED', '2026-05-19', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 20, 3, 'NOT_CONFIRMED', '2026-05-14', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 11, 2, 'NOT_CONFIRMED', '2026-05-09', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 12, 3, 'NOT_CONFIRMED', '2026-05-04', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 13, 2, 'NOT_CONFIRMED', '2026-04-29', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 14, 3, 'NOT_CONFIRMED', '2026-04-24', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 15, 2, 'NOT_CONFIRMED', '2026-04-19', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 16, 3, 'NOT_CONFIRMED', '2026-04-14', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 17, 2, 'NOT_CONFIRMED', '2026-04-09', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 18, 3, 'NOT_CONFIRMED', '2026-04-04', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 19, 2, 'NOT_CONFIRMED', '2026-03-30', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 20, 3, 'NOT_CONFIRMED', '2026-03-25', 'SIMULATED_DEMO');
+
+-- Route 1, class SLEEPER, waitlist positions 21-30: 1/20 successes.
+INSERT INTO waitlist_probability_history (route_id, class_type, waitlist_position_at_observation, days_remaining_at_observation, final_outcome, observation_date, data_source) VALUES
+  (1, 'SLEEPER', 21, 2, 'CONFIRMED', '2026-05-29', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 22, 3, 'NOT_CONFIRMED', '2026-05-24', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 23, 2, 'NOT_CONFIRMED', '2026-05-19', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 24, 3, 'NOT_CONFIRMED', '2026-05-14', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 25, 2, 'NOT_CONFIRMED', '2026-05-09', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 26, 3, 'NOT_CONFIRMED', '2026-05-04', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 27, 2, 'NOT_CONFIRMED', '2026-04-29', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 28, 3, 'NOT_CONFIRMED', '2026-04-24', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 29, 2, 'NOT_CONFIRMED', '2026-04-19', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 30, 3, 'NOT_CONFIRMED', '2026-04-14', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 21, 2, 'NOT_CONFIRMED', '2026-04-09', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 22, 3, 'NOT_CONFIRMED', '2026-04-04', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 23, 2, 'NOT_CONFIRMED', '2026-03-30', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 24, 3, 'NOT_CONFIRMED', '2026-03-25', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 25, 2, 'NOT_CONFIRMED', '2026-03-20', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 26, 3, 'NOT_CONFIRMED', '2026-03-15', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 27, 2, 'NOT_CONFIRMED', '2026-03-10', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 28, 3, 'NOT_CONFIRMED', '2026-03-05', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 29, 2, 'NOT_CONFIRMED', '2026-02-28', 'SIMULATED_DEMO'),
+  (1, 'SLEEPER', 30, 3, 'NOT_CONFIRMED', '2026-02-23', 'SIMULATED_DEMO');
+
+-- Route 1, class AC, waitlist positions 1-2: 15/20 successes.
+INSERT INTO waitlist_probability_history (route_id, class_type, waitlist_position_at_observation, days_remaining_at_observation, final_outcome, observation_date, data_source) VALUES
+  (1, 'AC', 1, 2, 'CONFIRMED', '2026-07-28', 'SIMULATED_DEMO'),
+  (1, 'AC', 2, 3, 'CONFIRMED', '2026-07-23', 'SIMULATED_DEMO'),
+  (1, 'AC', 1, 2, 'CONFIRMED', '2026-07-18', 'SIMULATED_DEMO'),
+  (1, 'AC', 2, 3, 'CONFIRMED', '2026-07-13', 'SIMULATED_DEMO'),
+  (1, 'AC', 1, 2, 'CONFIRMED', '2026-07-08', 'SIMULATED_DEMO'),
+  (1, 'AC', 2, 3, 'CONFIRMED', '2026-07-03', 'SIMULATED_DEMO'),
+  (1, 'AC', 1, 2, 'CONFIRMED', '2026-06-28', 'SIMULATED_DEMO'),
+  (1, 'AC', 2, 3, 'CONFIRMED', '2026-06-23', 'SIMULATED_DEMO'),
+  (1, 'AC', 1, 2, 'CONFIRMED', '2026-06-18', 'SIMULATED_DEMO'),
+  (1, 'AC', 2, 3, 'CONFIRMED', '2026-06-13', 'SIMULATED_DEMO'),
+  (1, 'AC', 1, 2, 'CONFIRMED', '2026-06-08', 'SIMULATED_DEMO'),
+  (1, 'AC', 2, 3, 'CONFIRMED', '2026-06-03', 'SIMULATED_DEMO'),
+  (1, 'AC', 1, 2, 'CONFIRMED', '2026-05-29', 'SIMULATED_DEMO'),
+  (1, 'AC', 2, 3, 'CONFIRMED', '2026-05-24', 'SIMULATED_DEMO'),
+  (1, 'AC', 1, 2, 'CONFIRMED', '2026-05-19', 'SIMULATED_DEMO'),
+  (1, 'AC', 2, 3, 'NOT_CONFIRMED', '2026-05-14', 'SIMULATED_DEMO'),
+  (1, 'AC', 1, 2, 'NOT_CONFIRMED', '2026-05-09', 'SIMULATED_DEMO'),
+  (1, 'AC', 2, 3, 'NOT_CONFIRMED', '2026-05-04', 'SIMULATED_DEMO'),
+  (1, 'AC', 1, 2, 'NOT_CONFIRMED', '2026-04-29', 'SIMULATED_DEMO'),
+  (1, 'AC', 2, 3, 'NOT_CONFIRMED', '2026-04-24', 'SIMULATED_DEMO');
+
+-- Route 1, class AC, waitlist positions 3-5: 10/20 successes.
+INSERT INTO waitlist_probability_history (route_id, class_type, waitlist_position_at_observation, days_remaining_at_observation, final_outcome, observation_date, data_source) VALUES
+  (1, 'AC', 3, 2, 'CONFIRMED', '2026-07-22', 'SIMULATED_DEMO'),
+  (1, 'AC', 4, 3, 'CONFIRMED', '2026-07-17', 'SIMULATED_DEMO'),
+  (1, 'AC', 5, 2, 'CONFIRMED', '2026-07-12', 'SIMULATED_DEMO'),
+  (1, 'AC', 3, 3, 'CONFIRMED', '2026-07-07', 'SIMULATED_DEMO'),
+  (1, 'AC', 4, 2, 'CONFIRMED', '2026-07-02', 'SIMULATED_DEMO'),
+  (1, 'AC', 5, 3, 'CONFIRMED', '2026-06-27', 'SIMULATED_DEMO'),
+  (1, 'AC', 3, 2, 'CONFIRMED', '2026-06-22', 'SIMULATED_DEMO'),
+  (1, 'AC', 4, 3, 'CONFIRMED', '2026-06-17', 'SIMULATED_DEMO'),
+  (1, 'AC', 5, 2, 'CONFIRMED', '2026-06-12', 'SIMULATED_DEMO'),
+  (1, 'AC', 3, 3, 'CONFIRMED', '2026-06-07', 'SIMULATED_DEMO'),
+  (1, 'AC', 4, 2, 'NOT_CONFIRMED', '2026-06-02', 'SIMULATED_DEMO'),
+  (1, 'AC', 5, 3, 'NOT_CONFIRMED', '2026-05-28', 'SIMULATED_DEMO'),
+  (1, 'AC', 3, 2, 'NOT_CONFIRMED', '2026-05-23', 'SIMULATED_DEMO'),
+  (1, 'AC', 4, 3, 'NOT_CONFIRMED', '2026-05-18', 'SIMULATED_DEMO'),
+  (1, 'AC', 5, 2, 'NOT_CONFIRMED', '2026-05-13', 'SIMULATED_DEMO'),
+  (1, 'AC', 3, 3, 'NOT_CONFIRMED', '2026-05-08', 'SIMULATED_DEMO'),
+  (1, 'AC', 4, 2, 'NOT_CONFIRMED', '2026-05-03', 'SIMULATED_DEMO'),
+  (1, 'AC', 5, 3, 'NOT_CONFIRMED', '2026-04-28', 'SIMULATED_DEMO'),
+  (1, 'AC', 3, 2, 'NOT_CONFIRMED', '2026-04-23', 'SIMULATED_DEMO'),
+  (1, 'AC', 4, 3, 'NOT_CONFIRMED', '2026-04-18', 'SIMULATED_DEMO');
+
+-- Route 2, class SLEEPER, waitlist positions 1-2: 16/20 successes.
+INSERT INTO waitlist_probability_history (route_id, class_type, waitlist_position_at_observation, days_remaining_at_observation, final_outcome, observation_date, data_source) VALUES
+  (2, 'SLEEPER', 1, 2, 'CONFIRMED', '2026-07-11', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 2, 3, 'CONFIRMED', '2026-07-06', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 1, 2, 'CONFIRMED', '2026-07-01', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 2, 3, 'CONFIRMED', '2026-06-26', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 1, 2, 'CONFIRMED', '2026-06-21', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 2, 3, 'CONFIRMED', '2026-06-16', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 1, 2, 'CONFIRMED', '2026-06-11', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 2, 3, 'CONFIRMED', '2026-06-06', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 1, 2, 'CONFIRMED', '2026-06-01', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 2, 3, 'CONFIRMED', '2026-05-27', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 1, 2, 'CONFIRMED', '2026-05-22', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 2, 3, 'CONFIRMED', '2026-05-17', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 1, 2, 'CONFIRMED', '2026-05-12', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 2, 3, 'CONFIRMED', '2026-05-07', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 1, 2, 'CONFIRMED', '2026-05-02', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 2, 3, 'CONFIRMED', '2026-04-27', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 1, 2, 'NOT_CONFIRMED', '2026-04-22', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 2, 3, 'NOT_CONFIRMED', '2026-04-17', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 1, 2, 'NOT_CONFIRMED', '2026-04-12', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 2, 3, 'NOT_CONFIRMED', '2026-04-07', 'SIMULATED_DEMO');
+
+-- Route 2, class SLEEPER, waitlist positions 3-5: 11/20 successes.
+INSERT INTO waitlist_probability_history (route_id, class_type, waitlist_position_at_observation, days_remaining_at_observation, final_outcome, observation_date, data_source) VALUES
+  (2, 'SLEEPER', 3, 2, 'CONFIRMED', '2026-07-05', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 4, 3, 'CONFIRMED', '2026-06-30', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 5, 2, 'CONFIRMED', '2026-06-25', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 3, 3, 'CONFIRMED', '2026-06-20', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 4, 2, 'CONFIRMED', '2026-06-15', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 5, 3, 'CONFIRMED', '2026-06-10', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 3, 2, 'CONFIRMED', '2026-06-05', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 4, 3, 'CONFIRMED', '2026-05-31', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 5, 2, 'CONFIRMED', '2026-05-26', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 3, 3, 'CONFIRMED', '2026-05-21', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 4, 2, 'CONFIRMED', '2026-05-16', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 5, 3, 'NOT_CONFIRMED', '2026-05-11', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 3, 2, 'NOT_CONFIRMED', '2026-05-06', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 4, 3, 'NOT_CONFIRMED', '2026-05-01', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 5, 2, 'NOT_CONFIRMED', '2026-04-26', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 3, 3, 'NOT_CONFIRMED', '2026-04-21', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 4, 2, 'NOT_CONFIRMED', '2026-04-16', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 5, 3, 'NOT_CONFIRMED', '2026-04-11', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 3, 2, 'NOT_CONFIRMED', '2026-04-06', 'SIMULATED_DEMO'),
+  (2, 'SLEEPER', 4, 3, 'NOT_CONFIRMED', '2026-04-01', 'SIMULATED_DEMO');
+
+-- Route 2, class CHAIR_CAR, waitlist positions 1-2: 17/20 successes.
+INSERT INTO waitlist_probability_history (route_id, class_type, waitlist_position_at_observation, days_remaining_at_observation, final_outcome, observation_date, data_source) VALUES
+  (2, 'CHAIR_CAR', 1, 2, 'CONFIRMED', '2026-07-11', 'SIMULATED_DEMO'),
+  (2, 'CHAIR_CAR', 2, 3, 'CONFIRMED', '2026-07-06', 'SIMULATED_DEMO'),
+  (2, 'CHAIR_CAR', 1, 2, 'CONFIRMED', '2026-07-01', 'SIMULATED_DEMO'),
+  (2, 'CHAIR_CAR', 2, 3, 'CONFIRMED', '2026-06-26', 'SIMULATED_DEMO'),
+  (2, 'CHAIR_CAR', 1, 2, 'CONFIRMED', '2026-06-21', 'SIMULATED_DEMO'),
+  (2, 'CHAIR_CAR', 2, 3, 'CONFIRMED', '2026-06-16', 'SIMULATED_DEMO'),
+  (2, 'CHAIR_CAR', 1, 2, 'CONFIRMED', '2026-06-11', 'SIMULATED_DEMO'),
+  (2, 'CHAIR_CAR', 2, 3, 'CONFIRMED', '2026-06-06', 'SIMULATED_DEMO'),
+  (2, 'CHAIR_CAR', 1, 2, 'CONFIRMED', '2026-06-01', 'SIMULATED_DEMO'),
+  (2, 'CHAIR_CAR', 2, 3, 'CONFIRMED', '2026-05-27', 'SIMULATED_DEMO'),
+  (2, 'CHAIR_CAR', 1, 2, 'CONFIRMED', '2026-05-22', 'SIMULATED_DEMO'),
+  (2, 'CHAIR_CAR', 2, 3, 'CONFIRMED', '2026-05-17', 'SIMULATED_DEMO'),
+  (2, 'CHAIR_CAR', 1, 2, 'CONFIRMED', '2026-05-12', 'SIMULATED_DEMO'),
+  (2, 'CHAIR_CAR', 2, 3, 'CONFIRMED', '2026-05-07', 'SIMULATED_DEMO'),
+  (2, 'CHAIR_CAR', 1, 2, 'CONFIRMED', '2026-05-02', 'SIMULATED_DEMO'),
+  (2, 'CHAIR_CAR', 2, 3, 'CONFIRMED', '2026-04-27', 'SIMULATED_DEMO'),
+  (2, 'CHAIR_CAR', 1, 2, 'CONFIRMED', '2026-04-22', 'SIMULATED_DEMO'),
+  (2, 'CHAIR_CAR', 2, 3, 'NOT_CONFIRMED', '2026-04-17', 'SIMULATED_DEMO'),
+  (2, 'CHAIR_CAR', 1, 2, 'NOT_CONFIRMED', '2026-04-12', 'SIMULATED_DEMO'),
+  (2, 'CHAIR_CAR', 2, 3, 'NOT_CONFIRMED', '2026-04-07', 'SIMULATED_DEMO');
+
+-- Route 3, class SLEEPER, waitlist positions 1-2: 14/20 successes.
+INSERT INTO waitlist_probability_history (route_id, class_type, waitlist_position_at_observation, days_remaining_at_observation, final_outcome, observation_date, data_source) VALUES
+  (3, 'SLEEPER', 1, 2, 'CONFIRMED', '2026-06-24', 'SIMULATED_DEMO'),
+  (3, 'SLEEPER', 2, 3, 'CONFIRMED', '2026-06-19', 'SIMULATED_DEMO'),
+  (3, 'SLEEPER', 1, 2, 'CONFIRMED', '2026-06-14', 'SIMULATED_DEMO'),
+  (3, 'SLEEPER', 2, 3, 'CONFIRMED', '2026-06-09', 'SIMULATED_DEMO'),
+  (3, 'SLEEPER', 1, 2, 'CONFIRMED', '2026-06-04', 'SIMULATED_DEMO'),
+  (3, 'SLEEPER', 2, 3, 'CONFIRMED', '2026-05-30', 'SIMULATED_DEMO'),
+  (3, 'SLEEPER', 1, 2, 'CONFIRMED', '2026-05-25', 'SIMULATED_DEMO'),
+  (3, 'SLEEPER', 2, 3, 'CONFIRMED', '2026-05-20', 'SIMULATED_DEMO'),
+  (3, 'SLEEPER', 1, 2, 'CONFIRMED', '2026-05-15', 'SIMULATED_DEMO'),
+  (3, 'SLEEPER', 2, 3, 'CONFIRMED', '2026-05-10', 'SIMULATED_DEMO'),
+  (3, 'SLEEPER', 1, 2, 'CONFIRMED', '2026-05-05', 'SIMULATED_DEMO'),
+  (3, 'SLEEPER', 2, 3, 'CONFIRMED', '2026-04-30', 'SIMULATED_DEMO'),
+  (3, 'SLEEPER', 1, 2, 'CONFIRMED', '2026-04-25', 'SIMULATED_DEMO'),
+  (3, 'SLEEPER', 2, 3, 'CONFIRMED', '2026-04-20', 'SIMULATED_DEMO'),
+  (3, 'SLEEPER', 1, 2, 'NOT_CONFIRMED', '2026-04-15', 'SIMULATED_DEMO'),
+  (3, 'SLEEPER', 2, 3, 'NOT_CONFIRMED', '2026-04-10', 'SIMULATED_DEMO'),
+  (3, 'SLEEPER', 1, 2, 'NOT_CONFIRMED', '2026-04-05', 'SIMULATED_DEMO'),
+  (3, 'SLEEPER', 2, 3, 'NOT_CONFIRMED', '2026-03-31', 'SIMULATED_DEMO'),
+  (3, 'SLEEPER', 1, 2, 'NOT_CONFIRMED', '2026-03-26', 'SIMULATED_DEMO'),
+  (3, 'SLEEPER', 2, 3, 'NOT_CONFIRMED', '2026-03-21', 'SIMULATED_DEMO');
+
+-- Route 3, class AC, waitlist positions 1-2: 16/20 successes.
+INSERT INTO waitlist_probability_history (route_id, class_type, waitlist_position_at_observation, days_remaining_at_observation, final_outcome, observation_date, data_source) VALUES
+  (3, 'AC', 1, 2, 'CONFIRMED', '2026-06-24', 'SIMULATED_DEMO'),
+  (3, 'AC', 2, 3, 'CONFIRMED', '2026-06-19', 'SIMULATED_DEMO'),
+  (3, 'AC', 1, 2, 'CONFIRMED', '2026-06-14', 'SIMULATED_DEMO'),
+  (3, 'AC', 2, 3, 'CONFIRMED', '2026-06-09', 'SIMULATED_DEMO'),
+  (3, 'AC', 1, 2, 'CONFIRMED', '2026-06-04', 'SIMULATED_DEMO'),
+  (3, 'AC', 2, 3, 'CONFIRMED', '2026-05-30', 'SIMULATED_DEMO'),
+  (3, 'AC', 1, 2, 'CONFIRMED', '2026-05-25', 'SIMULATED_DEMO'),
+  (3, 'AC', 2, 3, 'CONFIRMED', '2026-05-20', 'SIMULATED_DEMO'),
+  (3, 'AC', 1, 2, 'CONFIRMED', '2026-05-15', 'SIMULATED_DEMO'),
+  (3, 'AC', 2, 3, 'CONFIRMED', '2026-05-10', 'SIMULATED_DEMO'),
+  (3, 'AC', 1, 2, 'CONFIRMED', '2026-05-05', 'SIMULATED_DEMO'),
+  (3, 'AC', 2, 3, 'CONFIRMED', '2026-04-30', 'SIMULATED_DEMO'),
+  (3, 'AC', 1, 2, 'CONFIRMED', '2026-04-25', 'SIMULATED_DEMO'),
+  (3, 'AC', 2, 3, 'CONFIRMED', '2026-04-20', 'SIMULATED_DEMO'),
+  (3, 'AC', 1, 2, 'CONFIRMED', '2026-04-15', 'SIMULATED_DEMO'),
+  (3, 'AC', 2, 3, 'CONFIRMED', '2026-04-10', 'SIMULATED_DEMO'),
+  (3, 'AC', 1, 2, 'NOT_CONFIRMED', '2026-04-05', 'SIMULATED_DEMO'),
+  (3, 'AC', 2, 3, 'NOT_CONFIRMED', '2026-03-31', 'SIMULATED_DEMO'),
+  (3, 'AC', 1, 2, 'NOT_CONFIRMED', '2026-03-26', 'SIMULATED_DEMO'),
+  (3, 'AC', 2, 3, 'NOT_CONFIRMED', '2026-03-21', 'SIMULATED_DEMO');
+
+-- The UI/API must label these estimates as simulated demonstration statistics.
