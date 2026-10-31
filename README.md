@@ -1,40 +1,225 @@
-# Railway+ — Railway Reservation System
+# 🚆 Railway Reservation Management System
 
-A full-stack undergraduate DBMS project demonstrating railway journey search, seat reservation, FIFO waitlist handling, automatic waitlist promotion through a MySQL trigger, and historical waitlist confirmation probability estimates.
+A database-driven Railway Reservation Management System designed to simplify train reservations, passenger management, ticket booking, and waitlist handling.
 
-> **Academic scope:** route names, train names, schedules, fares, and historical observations in the seed data are fictional demonstration records. This is not connected to IRCTC or any real railway service. Probability estimates are empirical demonstrations, not official predictions.
+The project uses **MySQL, SQL triggers, stored procedures, and a web-based interface** to demonstrate real-world database management concepts.
 
-## Technology
+One of its key features is an automated waitlist promotion mechanism combined with a historical-data-based probability estimation system that helps passengers understand their chances of getting a confirmed seat.
 
-- **Database:** MySQL Community Server 8.0.46+
-- **SQL client:** MySQL Workbench 8.0 CE
-- **Backend:** Node.js, Express, mysql2, JWT, bcrypt
-- **Frontend:** React, Vite, React Router, Axios
-- **Collaboration:** Git and GitHub
+---
 
-## Main features
+## 📌 Project Overview
 
-- Passenger registration/login with bcrypt password hashing and JWT sessions.
-- Train/schedule search by origin, destination, journey date, and class.
-- Live seat availability calculated from MySQL seat allocations.
-- Stored procedure for transaction-safe booking; full classes create FIFO waitlist entries.
-- Stored procedure for cancellation; an `AFTER INSERT` trigger promotes the next eligible waiting booking and allocates the released seat in the same transaction.
-- Booking history, cancellation records, and an administrator metrics page.
-- Historical confirmation estimate based on comparable route/class/position/lead-time buckets, with a 20-outcome minimum and fallback comparison groups.
-- Reporting views, a guarded admin action to finalize waitlist outcomes for past journeys, and commented DCL examples.
+Traditional railway reservation systems manage ticket bookings, cancellations, and waiting lists. However, passengers often have limited information about their chances of getting a confirmed ticket when they are placed on a waiting list.
 
-## Prerequisites
+Our system addresses this problem by introducing:
 
-1. MySQL Community Server 8.0.46 or compatible MySQL 8.0 release, running locally on port `3306`.
-2. MySQL Workbench 8.0 CE.
-3. Node.js 22 LTS (or a supported Node.js version compatible with the installed Vite version) and npm.
-4. Git (recommended for team collaboration).
+* Automated waitlist management.
+* Automatic promotion of waitlisted passengers when confirmed tickets become available.
+* Probability-based confirmation estimation using historical booking data.
+* Centralized management of trains, passengers, bookings, and reservations.
 
-PHP and XAMPP are not required.
+The primary objective is to demonstrate how database concepts can be applied to build a practical railway reservation system.
 
-## 1. Create the database in MySQL Workbench
+---
 
-Open MySQL Workbench and connect to your local MySQL server. Open each file from the `database/` directory and execute them **in this order**:
+## ✨ Key Features
+
+### 1. User and Passenger Management
+
+* Passenger registration and management.
+* Storage of passenger details.
+* Management of booking information.
+
+### 2. Train Management
+
+* Train information management.
+* Train schedules and route details.
+* Seat availability management.
+
+### 3. Ticket Reservation
+
+* Book railway tickets.
+* Generate booking records.
+* Maintain reservation details.
+* Track booking status.
+
+### 4. Automated Waitlist Management
+
+* Passengers are automatically added to the waiting list when confirmed seats are unavailable.
+* Each waitlisted passenger receives a waiting-list position.
+* When a confirmed booking is cancelled, the database trigger automatically promotes the next eligible passenger.
+* The booking status is updated automatically.
+
+### 5. Waitlist Confirmation Probability
+
+An additional feature that estimates the probability of a waitlisted passenger receiving a confirmed seat.
+
+* Uses historical booking and cancellation records.
+* Analyzes previous waitlist confirmation outcomes.
+* Provides an estimated confirmation probability.
+* Helps passengers make more informed booking decisions.
+
+**Note:** The probability is an estimate based on historical data and is not a guarantee of confirmation.
+
+---
+
+## 🛠️ Technologies Used
+
+| Technology            | Purpose                            |
+| --------------------- | ---------------------------------- |
+| HTML, CSS, JavaScript | Frontend development               |
+| React / Vite          | Frontend framework and development |
+| Node.js               | Backend runtime                    |
+| Express.js            | Backend API                        |
+| MySQL 8.0             | Database management                |
+| SQL                   | Database queries and operations    |
+| Stored Procedures     | Reusable database operations       |
+| SQL Triggers          | Automated waitlist management      |
+| Git & GitHub          | Version control and collaboration  |
+
+---
+
+## 📂 Project Structure
+
+```text
+Railway-Reservation-System/
+│
+├── backend/
+│   └── src/
+│       ├── controllers/
+│       ├── middleware/
+│       ├── routes/
+│       ├── services/
+│       └── index.js
+│
+├── frontend/
+│   └── src/
+│       ├── components/
+│       ├── pages/
+│       ├── services/
+│       ├── App.jsx
+│       └── main.jsx
+│
+├── database/
+│   ├── 01_schema.sql
+│   ├── 02_constraints_and_indexes.sql
+│   ├── 03_stored_procedures.sql
+│   ├── 04_triggers.sql
+│   ├── 05_views_and_reports.sql
+│   ├── 06_seed_data.sql
+│   └── 07_probability_history.sql
+│
+├── docs/
+│   └── viva_guide_and_project_report.md
+│
+├── README.md
+└── .gitignore
+```
+
+---
+
+## 🗄️ Database Implementation
+
+The project uses MySQL as its relational database management system.
+
+The database is responsible for maintaining relationships between passengers, trains, reservations, bookings, and waitlist records.
+
+### Important Database Concepts Implemented
+
+**1. Primary Keys and Foreign Keys**
+
+* Maintain relationships between different tables.
+* Ensure referential integrity.
+
+**2. Constraints**
+
+* Maintain data accuracy.
+* Prevent invalid database entries.
+
+**3. Stored Procedures**
+
+* Implement reusable database operations.
+* Simplify booking and reservation-related operations.
+
+**4. Triggers**
+
+* Automate database operations.
+* Handle waitlist promotion after ticket cancellation.
+
+**5. Views**
+
+* Simplify access to frequently required information.
+* Generate useful booking and reservation reports.
+
+**6. Indexes**
+
+* Improve query performance.
+* Optimize database searching operations.
+
+---
+
+## ⚙️ How the Waitlist System Works
+
+The automated waitlist mechanism follows this process:
+
+1. A passenger requests a ticket.
+2. If a confirmed seat is available, the booking is confirmed.
+3. If no confirmed seat is available, the passenger is added to the waiting list.
+4. When a confirmed ticket is cancelled, a database trigger is activated.
+5. The trigger identifies the next eligible passenger in the waiting list.
+6. The passenger's booking status is updated.
+7. The available seat is assigned according to the waitlist order.
+
+This process reduces the need for manual waitlist management.
+
+---
+
+## 📊 Probability-Based Confirmation Estimation
+
+The system introduces a historical-data-based approach to estimate waitlist confirmation chances.
+
+It uses previously recorded booking, cancellation, and waitlist outcomes to calculate an estimated probability.
+
+The purpose is to provide passengers with additional information about their waiting-list status.
+
+Unlike a traditional waitlist system, this feature introduces a predictive element into the reservation process.
+
+---
+
+## 🚀 Installation and Setup
+
+Follow these steps to run the project locally.
+
+### Prerequisites
+
+Make sure you have installed:
+
+* Node.js
+* npm
+* MySQL Server 8.0 or later
+* Visual Studio Code
+* Git
+
+### Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/Railway-Reservation-System.git
+```
+
+Navigate into the project:
+
+```bash
+cd Railway-Reservation-System
+```
+
+### Step 2: Set Up the Database
+
+1. Open MySQL Workbench or MySQL Command Line.
+2. Execute the SQL files inside the `database` folder in the appropriate order.
+3. Verify that the database and tables have been created successfully.
+
+Recommended execution order:
 
 1. `01_schema.sql`
 2. `02_constraints_and_indexes.sql`
@@ -44,135 +229,107 @@ Open MySQL Workbench and connect to your local MySQL server. Open each file from
 6. `06_seed_data.sql`
 7. `07_probability_history.sql`
 
-`08_dcl_permissions.sql` contains DCL examples commented out for safety. If your teacher asks you to demonstrate DCL, replace the sample password, uncomment the commands, and run them using a database administrator account. Do not commit any customized password.
+### Step 3: Configure the Backend
 
-The schema file creates `railway_db`. If you already made an empty database with this name, that is fine. The seed data provides fictional stations, trains, routes, future schedules, and seats. The probability-history file creates synthetic rows and replaces only prior synthetic rows on re-run.
+Navigate to the backend folder:
 
-**Do not run these scripts against a database that contains unrelated data.** The demo data uses fixed sample IDs so the walkthrough is repeatable on a fresh project database.
-
-## 2. Configure the backend
-
-Open a terminal in VS Code:
-
-```powershell
+```bash
 cd backend
+```
+
+Install dependencies:
+
+```bash
 npm install
-Copy-Item .env.example .env
 ```
 
-Open `backend/.env` and replace the values, especially `DB_PASSWORD` and `JWT_SECRET`.
+Configure your database credentials using the `.env.example` file.
 
-Example shape (use your own local values):
+Create your local `.env` file and provide the required configuration.
 
-```env
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_NAME=railway_db
-DB_USER=railway_app
-DB_PASSWORD=the_password_you_chose_for_railway_app
-JWT_SECRET=put_a_random_secret_of_32_or_more_characters_here
-PORT=5000
-CLIENT_ORIGIN=http://localhost:5173
-```
+**Never upload your actual `.env` file or database passwords to GitHub.**
 
-Because you have a working Workbench session but may not remember the saved root password, create a dedicated database account directly from a new SQL tab in Workbench after the database schema has been created. Example (replace the password with your own unique value):
+### Step 4: Start the Backend
 
-```sql
-CREATE USER 'railway_app'@'localhost' IDENTIFIED BY 'choose_a_unique_strong_password';
-CREATE USER 'railway_app'@'127.0.0.1' IDENTIFIED BY 'choose_a_unique_strong_password';
-GRANT ALL PRIVILEGES ON railway_db.* TO 'railway_app'@'localhost';
-GRANT ALL PRIVILEGES ON railway_db.* TO 'railway_app'@'127.0.0.1';
-```
+Run the development command configured in the backend's `package.json`.
 
-Then set `DB_USER=railway_app` and `DB_PASSWORD` to that exact password in `backend/.env`. This avoids putting your root password in the application configuration. Never upload `.env` to GitHub.
+### Step 5: Configure the Frontend
 
-Start the API:
+Open another terminal:
 
-```powershell
-npm run dev
-```
-
-The API runs at `http://localhost:5000`. Check its database connection at `http://localhost:5000/api/health`.
-
-## 3. Configure the frontend
-
-Open a **second** VS Code terminal:
-
-```powershell
+```bash
 cd frontend
+```
+
+Install dependencies:
+
+```bash
 npm install
+```
+
+Start the frontend development server:
+
+```bash
 npm run dev
 ```
 
-Open `http://localhost:5173`. Vite proxies `/api` to the Express backend on port 5000.
+Open the local URL displayed in your terminal to access the application.
 
-## 4. First run and admin access
+---
 
-1. Open the website and create an account from **Create account**.
-2. You can use the passenger features immediately.
-3. To make your own account an admin for a local teacher demonstration, stop at the backend terminal, open a new terminal in `backend/`, and run:
+## 🎯 Project Objectives
 
-```powershell
-npm run make-admin -- your_registered_email@example.com
-```
+* Develop a database-driven railway reservation system.
+* Implement efficient passenger and train management.
+* Automate ticket cancellation and waitlist promotion using SQL triggers.
+* Demonstrate stored procedures, constraints, views, and indexing.
+* Introduce historical-data-based waitlist confirmation estimation.
+* Apply database management concepts to a practical real-world problem.
 
-4. Sign out and sign back in. The Admin console will then appear.
+---
 
-The script changes only the role of the matching account. Keep it a local development/admin utility; do not expose this operation through a public API.
+## 🔮 Future Scope
 
-## 5. Suggested teacher demo (5–7 minutes)
+The system can be further improved by introducing:
 
-1. Register/login and show the Overview dashboard.
-2. Search `New Delhi Demo Terminal` → `Mumbai Demo Central`, choose the date three days ahead, and select `Sleeper`.
-3. The seeded journey has **three sleeper seats**. Book using enough separate passenger accounts to fill the three seats, then attempt a fourth booking. The fourth becomes waitlisted.
-4. Sign in as an account that owns a confirmed booking and cancel it. The database procedure records the cancellation; the trigger promotes the next eligible waiter and reuses the released seat.
-5. Show that the newly promoted booking is confirmed and the seat allocation is present in MySQL Workbench.
-6. Show the waitlist estimate for a waitlisted booking when one exists. It is calculated from rows in `waitlist_probability_history`, not hardcoded in React.
-7. Open MySQL Workbench to show `bookings`, `seat_allocations`, `waitlist_entries`, `cancellations`, and the trigger/procedure definitions.
-8. If using an admin account, show the Admin console's live metrics. The **Finalize past outcomes** action records known outcomes only for journeys with dates before today; it is safe to click again because each source booking is recorded at most once.
+* Real-time train tracking.
+* Online payment gateway integration.
+* Email and SMS booking notifications.
+* More advanced prediction models.
+* Improved passenger dashboards.
+* Advanced analytics and reservation reports.
 
-The waitlist demo requires different passenger accounts because each account can cancel only its own bookings. Do not try to cancel another user's booking to demonstrate promotion.
+---
 
-## Probability methodology
+## 👨‍💻 Contributors
 
-The estimator counts historical rows with final outcomes `CONFIRMED` and `NOT_CONFIRMED`; it excludes `PASSENGER_CANCELLED`. It first compares the same route, class, waitlist-position band, and days-remaining band. If fewer than 20 observations are available, it broadens to the same route/class/position band across all lead times, then to the same class/position band across routes. If no comparison reaches 20 outcomes, the API returns an insufficient-data message.
+**Developed as a Database Management System (DBMS) academic project.**
 
-`estimated probability = confirmed comparable outcomes / all known comparable outcomes × 100`
+Team Members:
 
-The seed values are simulated to exercise the feature. An administrator can record known outcomes after a journey date has passed through the Admin console's **Finalize past outcomes** action; the database stores a unique source-booking ID so the operation does not duplicate outcomes. Do not present synthetic rows as real railway statistics. An individual booking is not guaranteed to confirm even when similar historical cases often did.
+* Member 1 – [Name]
+* Member 2 – [Name]
+* Member 3 – [Name]
+* Member 4 – [Name]
 
-## API routes
+Institution: Netaji Subhas University of Technology (NSUT)
 
-| Method | Route | Purpose |
-|---|---|---|
-| GET | `/api/health` | API and database health |
-| POST | `/api/auth/register` | Register passenger |
-| POST | `/api/auth/login` | Authenticate |
-| GET | `/api/auth/me` | Current account |
-| GET | `/api/stations` | Station list |
-| GET | `/api/schedules/search` | Search schedules |
-| GET | `/api/bookings/my` | Current user's bookings |
-| POST | `/api/bookings/create` | Create booking / waitlist entry |
-| POST | `/api/bookings/cancel` | Cancel own booking and trigger promotion |
-| GET | `/api/dashboard/summary` | Passenger's booking counts |
-| GET | `/api/dashboard/admin/summary` | Admin metrics (admin only) |
-| POST | `/api/dashboard/admin/finalize-history` | Record known outcomes for past waitlist journeys (admin only) |
-| GET | `/api/probability?booking_id=123` | Historical estimate for own active waitlisted booking |
+---
 
-All routes other than health, register, and login require a Bearer token.
+## 📚 Academic Context
 
-## GitHub team workflow
+This project was developed to demonstrate the practical implementation of Database Management System concepts, including:
 
-- Commit and push the source files, SQL scripts, and documentation.
-- Do **not** commit `backend/.env`, passwords, JWT secrets, `node_modules`, or build output.
-- Each teammate installs dependencies locally, creates their own `backend/.env`, and imports the shared SQL scripts into their own MySQL server.
-- Pull schema changes before coding against them. Keep one shared schema and do not rename columns independently.
-- Avoid editing the same file simultaneously; use small branches or coordinate before merging.
+* Relational Database Design
+* Entity Relationship Modelling
+* SQL Queries
+* Database Constraints
+* Stored Procedures
+* Triggers
+* Views
+* Indexing
+* Transaction Management
 
-## Notes and limitations
+---
 
-- This is a single origin-to-destination route model. It does not implement seat reuse across intermediate segments or real railway quotas.
-- Seats are assigned for one schedule and class; constraints prevent two active allocations for the same seat and schedule.
-- Seed routes, fares, station/train names, and historical observations are fictional.
-- MySQL stored procedures own booking/cancellation transactions. The trigger participates in the cancellation transaction; it must not start/commit its own transaction.
-- Always test the SQL scripts on a fresh `railway_db` before the lab demonstration.
+⭐ If you find this project interesting, feel free to explore the repository!
